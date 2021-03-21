@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 import { SessionService } from './auth/session.service';
 
@@ -7,17 +7,18 @@ import { SessionService } from './auth/session.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'auth-client';
-  private _logged: boolean;
+  isLogged: boolean;
+  constructor(private authService: AuthService) {}
 
-  constructor(private sessionService: SessionService, private authService: AuthService) {}
+  ngOnInit(): void {
+    this.authService.isLoggedIn.subscribe(logged => {
+      this.isLogged = logged;
+    })
+  }
 
   logout() {
     this.authService.logout();
-  }
-
-  get logged() {
-    return this.sessionService.isAuthanticate();
   }
 }

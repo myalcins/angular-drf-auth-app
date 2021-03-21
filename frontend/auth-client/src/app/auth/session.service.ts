@@ -19,7 +19,7 @@ export class SessionService {
     }
 
     getSession() {
-        return sessionStorage.getItem(this._key).split('"')[7] || null;
+        return sessionStorage.getItem(this._key) ? sessionStorage.getItem(this._key).split('"')[7] : null;
     }
 
     deleteSession() {

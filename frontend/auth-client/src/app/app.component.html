@@ -7,18 +7,26 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <ul class="nav justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link" *ngIf="!logged" routerLink="/login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" *ngIf="logged" (click)="logout()" routerLink="/login">Log Out</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" *ngIf="logged" routerLink="/home">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" *ngIf="!logged" routerLink='/register'>Register</a>
-      </li>
+      <div *ngIf="!(isLogged)">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+      </div>
+      <div *ngIf="(isLogged)">
+        <li class="nav-item">
+          <a class="nav-link" (click)="logout()" routerLink="/login">Log Out</a>
+        </li>
+      </div>
+      <div *ngIf="(isLogged)">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+      </div>
+      <div *ngIf="!(isLogged)">
+        <li class="nav-item">
+          <a class="nav-link" routerLink='/register'>Register</a>
+        </li>
+      </div>
     </ul>
   </div>
 </nav>
