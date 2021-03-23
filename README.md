@@ -10,6 +10,7 @@
 * Django 
 * Django Rest Framework
   - djangorestframework-simplejwt
+  - django-cors-headers
 
 `#` Frontend
 
